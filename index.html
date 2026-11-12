@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I love you Je 🌸💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Sacramento&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #ffc3a0 100%);
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+            color: #4a4a4a;
+            padding: 20px;
+        }
+
+        /* Floating Flowers & Hearts Background */
+        .floating-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .floating-item {
+            position: absolute;
+            font-size: 24px;
+            animation: floatUp 7s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(105vh) rotate(0deg) scale(0.6);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.9;
+            }
+            80% {
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* Pop Burst Animation */
+        .burst-item {
+            position: fixed;
+            font-size: 28px;
+            pointer-events: none;
+            z-index: 10;
+            animation: popBurst 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes popBurst {
+            0% {
+                transform: translate(-50%, -50%) scale(0.3) rotate(0deg);
+                opacity: 1;
+            }
+            70% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(1.3) rotate(var(--rot));
+                opacity: 0;
+            }
+        }
+
+        /* Random "I love you Je" Pop-up Text */
+        .love-popup {
+            position: fixed;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95);
+            color: #ff2a6d;
+            font-family: 'Sacramento', cursive;
+            font-size: 2.6rem;
+            font-weight: bold;
+            padding: 8px 24px;
+            border-radius: 50px;
+            border: 2px solid #ff8fa3;
+            box-shadow: 0 10px 25px rgba(255, 71, 126, 0.35);
+            pointer-events: none;
+            z-index: 20;
+            white-space: nowrap;
+            animation: popText 2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes popText {
+            0% {
+                transform: translate(-50%, -50%) scale(0.2);
+                opacity: 0;
+            }
+            20% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 1;
+            }
+            35% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+            80% {
+                transform: translate(-50%, -70%) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -95%) scale(0.9);
+                opacity: 0;
+            }
+        }
+
+        /* Main Card Container */
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            padding: 40px 25px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(255, 105, 135, 0.25);
+            text-align: center;
+            max-width: 480px;
+            width: 100%;
+            z-index: 2;
+            position: relative;
+            border: 3px solid #fff;
+        }
+
+        .flower-header {
+            font-size: 1.8rem;
+            letter-spacing: 5px;
+            margin-bottom: 5px;
+        }
+
+        .title {
+            font-family: 'Sacramento', cursive;
+            font-size: 3.5rem;
+            color: #ff477e;
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+
+        /* Encouragement Badge */
+        .encouragement-box {
+            background: #fff0f5;
+            border: 2px dashed #ff8fa3;
+            border-radius: 20px;
+            padding: 20px 15px;
+            margin: 15px 0 25px 0;
+        }
+
+        .good-job-emoji {
+            font-size: 2.8rem;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .encouragement-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #e01e5a;
+            margin-top: 8px;
+        }
+
+        .sub-encouragement {
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 5px;
+        }
+
+        /* Counter Box */
+        .counter-section {
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+            color: white;
+            padding: 18px 15px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(255, 117, 140, 0.3);
+        }
+
+        .counter-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            opacity: 0.95;
+        }
+
+        .years-banner {
+            background: rgba(255, 255, 255, 0.25);
+            padding: 10px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .years-number {
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: block;
+            letter-spacing: 0.5px;
+        }
+
+        .timer-grid {
+            display: flex;
+            justify-content: space-around;
+            gap: 8px;
+        }
+
+        .time-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 5px;
+            border-radius: 12px;
+            flex: 1;
+        }
+
+        .time-number {
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: block;
+        }
+
+        .time-unit {
+            font-size: 0.7rem;
+            opacity: 0.9;
+        }
+
+        /* Button Group */
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .cute-btn {
+            background: #ff477e;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 71, 126, 0.4);
+            transition: all 0.2s ease;
+        }
+
+        .cute-btn:hover {
+            background: #e01e5a;
+            transform: translateY(-2px);
+        }
+
+        .cute-btn:active {
+            transform: scale(0.95);
+        }
+
+        .pop-btn {
+            background: linear-gradient(135deg, #ff85a1 0%, #fbb1bd 100%);
+            color: #fff;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .pop-btn:hover {
+            background: linear-gradient(135deg, #ff7096 0%, #ff99ac 100%);
+        }
+
+        .surprise {
+            margin-top: 18px;
+            font-size: 0.95rem;
+            color: #c9184a;
+            font-weight: 600;
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Flowers & Hearts Background -->
+    <div class="floating-container" id="floatingItems"></div>
+
+    <div class="card">
+        <div class="flower-header">🌸🌷🌺🌷🌸</div>
+        <h1 class="title">Hey Beautiful!</h1>
+
+        <!-- Encouragement Section -->
+        <div class="encouragement-box">
+            <div class="good-job-emoji">👍✨</div>
+            <div class="encouragement-text">YOU'RE DOING GREAT POOOOOO!</div>
+            <div class="sub-encouragement">I'm so proud of everything you do every single day 💕 <br> MWAH MWAH MWAH MWAH LALALALALALALA</div>
+        </div>
+
+        <!-- Live Billion-Year Counter -->
+        <div class="counter-section">
+            <div class="counter-label">Time Loving You 💖</div>
+            <div class="years-banner">
+                <span class="years-number" id="years">1,000,000,000,000,000</span>
+                <span class="time-unit">Years</span>
+            </div>
+            <div class="timer-grid">
+                <div class="time-box">
+                    <span class="time-number" id="days">0</span>
+                    <span class="time-unit">Days</span>
+                </div>
+                <div class="time-box">
+                    <span class="time-number" id="hours">0</span>
+                    <span class="time-unit">Hours</span>
+                </div>
+                <div class="time-box">
+                    <span class="time-number" id="minutes">0</span>
+                    <span class="time-unit">Mins</span>
+                </div>
+                <div class="time-box">
+                    <span class="time-number" id="seconds">0</span>
+                    <span class="time-unit">Secs</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="cute-btn" onclick="revealSurprise()">MWAH 🌸</button>
+            <button class="cute-btn pop-btn" onclick="popMoreLove()">What's this? 💖</button>
+        </div>
+        
+        <div class="surprise" id="surpriseText">
+            You're beautiful and hot and sexy and gorgeous and pretty and smart and lovely and stunning and thicc 💐❤️
+        </div>
+    </div>
+
+    <script>
+        // Base billion years + live ticking time from your start date
+        const baseYears = 1000000000000000;
+        const startDate = new Date(2025, 0, 1, 0, 0, 0); // Jan 1, 2025
+
+        function updateCounter() {
+            const now = new Date();
+            const diff = Math.abs(now - startDate);
+
+            const totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const extraYears = Math.floor(totalDays / 365);
+            const days = totalDays % 365;
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / 1000 / 60) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            document.getElementById('years').innerText = (baseYears + extraYears).toLocaleString();
+            document.getElementById('days').innerText = days;
+            document.getElementById('hours').innerText = hours;
+            document.getElementById('minutes').innerText = minutes;
+            document.getElementById('seconds').innerText = seconds;
+        }
+
+        setInterval(updateCounter, 1000);
+        updateCounter();
+
+        // Ambient Floating Flowers & Hearts
+        const icons = ['🌸', '🌷', '🌺', '💖', '🌼', '💕', '🌹', '💗'];
+        function createFloatingItem() {
+            const container = document.getElementById('floatingItems');
+            const item = document.createElement('div');
+            item.classList.add('floating-item');
+            item.innerText = icons[Math.floor(Math.random() * icons.length)];
+            item.style.left = Math.random() * 100 + 'vw';
+            item.style.animationDuration = (Math.random() * 4 + 4) + 's';
+            item.style.fontSize = (Math.random() * 14 + 18) + 'px';
+            container.appendChild(item);
+
+            setTimeout(() => {
+                item.remove();
+            }, 8000);
+        }
+
+        setInterval(createFloatingItem, 450);
+
+        // Random Position Pop Burst + "I love you Je"
+        function popMoreLove() {
+            // Pick a random spot on screen (padded from edges so text doesn't clip)
+            const marginX = Math.min(140, window.innerWidth * 0.25);
+            const marginY = Math.min(100, window.innerHeight * 0.2);
+            const randX = Math.random() * (window.innerWidth - marginX * 2) + marginX;
+            const randY = Math.random() * (window.innerHeight - marginY * 2) + marginY;
+
+            // Create the "I love you Je" floating badge
+            const loveText = document.createElement('div');
+            loveText.classList.add('love-popup');
+            loveText.innerText = 'I love you Je ❤️';
+            loveText.style.left = randX + 'px';
+            loveText.style.top = randY + 'px';
+            document.body.appendChild(loveText);
+
+            setTimeout(() => {
+                loveText.remove();
+            }, 2000);
+
+            // Burst flowers and hearts from that exact random spot
+            for (let i = 0; i < 35; i++) {
+                const burst = document.createElement('div');
+                burst.classList.add('burst-item');
+                burst.innerText = icons[Math.floor(Math.random() * icons.length)];
+                burst.style.left = randX + 'px';
+                burst.style.top = randY + 'px';
+                burst.style.fontSize = (Math.random() * 18 + 18) + 'px';
+
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 240 + 70;
+                const tx = Math.cos(angle) * distance + 'px';
+                const ty = (Math.sin(angle) * distance - 40) + 'px';
+                const rot = (Math.random() * 720 - 360) + 'deg';
+
+                burst.style.setProperty('--tx', tx);
+                burst.style.setProperty('--ty', ty);
+                burst.style.setProperty('--rot', rot);
+
+                document.body.appendChild(burst);
+
+                setTimeout(() => {
+                    burst.remove();
+                }, 1600);
+            }
+        }
+
+        // Surprise Button
+        function revealSurprise() {
+            const surprise = document.getElementById('surpriseText');
+            surprise.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
